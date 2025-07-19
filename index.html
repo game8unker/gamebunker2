@@ -3,38 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Bunker - Negozio</title>
+    <title>Game Bunker</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="navbar">
-        <img src="logo.jpeg" alt="Logo Game Bunker" class="logo">
-        <nav>
+    <header id="home">
+        <nav class="navbar">
+            <img src="logo.jpeg" alt="Game Bunker Logo" class="logo">
             <ul class="nav-links">
-                <li><a href="#onepiece">One Piece</a></li>
-                <li><a href="#pokemon">Pokémon</a></li>
-                <li><a href="#yugioh">Yu-Gi-Oh</a></li>
-                <li><a href="#magic">Magic</a></li>
-                <li><a href="#lol">League of Legends</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#negozio">Negozio</a></li>
+                <li><a href="#tornei">Tornei</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+                <li><a href="#chi-siamo">Chi siamo</a></li>
             </ul>
         </nav>
-        <div id="cart-icon">🛒 <span id="cart-count">0</span></div>
+        <div class="hero">
+            <h1>Benvenuto su Game Bunker</h1>
+            <p>Il tuo rifugio per TCG e videogiochi</p>
+            <a href="#negozio" class="btn">Scopri il negozio</a>
+        </div>
     </header>
 
-    <main>
-        <section id="onepiece"><h2>One Piece</h2><div class="product-container" data-category="One Piece"></div></section>
-        <section id="pokemon"><h2>Pokémon</h2><div class="product-container" data-category="Pokémon"></div></section>
-        <section id="yugioh"><h2>Yu-Gi-Oh</h2><div class="product-container" data-category="Yu-Gi-Oh"></div></section>
-        <section id="magic"><h2>Magic</h2><div class="product-container" data-category="Magic"></div></section>
-        <section id="lol"><h2>League of Legends</h2><div class="product-container" data-category="League of Legends"></div></section>
-    </main>
+    <section id="negozio" class="section">
+        <h2>Negozio</h2>
+        <p>Presto disponibili i nostri prodotti TCG e videogiochi!</p>
+        <div class="product-list">
+            <div class="product-card">Prodotto 1</div>
+            <div class="product-card">Prodotto 2</div>
+            <div class="product-card">Prodotto 3</div>
+        </div>
+    </section>
 
-    <aside id="cart">
-        <h3>Carrello</h3>
-        <ul id="cart-items"></ul>
-        <p id="cart-total">Totale: €0.00</p>
-        <button onclick="clearCart()">Svuota Carrello</button>
-    </aside>
+    <section id="tornei" class="section alt">
+        <h2>Tornei</h2>
+        <p>Partecipa ai nostri tornei settimanali di One Piece Card Game, Pokémon e altri!</p>
+    </section>
+
+    <section id="contatti" class="section">
+        <h2>Contatti</h2>
+        <p>Scrivici su Instagram o vieni a trovarci in negozio. A breve il modulo di contatto.</p>
+    </section>
+
+    <section id="chi-siamo" class="section alt">
+        <h2>Chi siamo</h2>
+        <p>Game Bunker nasce dalla passione per i giochi di carte, i tornei e la community.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Game Bunker - Tutti i diritti riservati</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
