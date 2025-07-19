@@ -1,1 +1,1 @@
-console.log('Game Bunker sito attivo');
+console.log('Game Bunker sito attivo con sezioni');
