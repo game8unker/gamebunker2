@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Bunker - Negozio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <img src="logo.jpeg" alt="Logo Game Bunker" class="logo">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#onepiece">One Piece</a></li>
+                <li><a href="#pokemon">Pokémon</a></li>
+                <li><a href="#yugioh">Yu-Gi-Oh</a></li>
+                <li><a href="#magic">Magic</a></li>
+                <li><a href="#lol">League of Legends</a></li>
+            </ul>
+        </nav>
+        <div id="cart-icon">🛒 <span id="cart-count">0</span></div>
+    </header>
+
+    <main>
+        <section id="onepiece"><h2>One Piece</h2><div class="product-container" data-category="One Piece"></div></section>
+        <section id="pokemon"><h2>Pokémon</h2><div class="product-container" data-category="Pokémon"></div></section>
+        <section id="yugioh"><h2>Yu-Gi-Oh</h2><div class="product-container" data-category="Yu-Gi-Oh"></div></section>
+        <section id="magic"><h2>Magic</h2><div class="product-container" data-category="Magic"></div></section>
+        <section id="lol"><h2>League of Legends</h2><div class="product-container" data-category="League of Legends"></div></section>
+    </main>
+
+    <aside id="cart">
+        <h3>Carrello</h3>
+        <ul id="cart-items"></ul>
+        <p id="cart-total">Totale: €0.00</p>
+        <button onclick="clearCart()">Svuota Carrello</button>
+    </aside>
+
+    <script src="script.js"></script>
+</body>
+</html>
