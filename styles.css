@@ -1,0 +1,38 @@
+
+
+
+/* Vault Animation */
+#vault-animation {
+  background-color: #0a1c2e;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: openVault 2.5s ease forwards;
+}
+
+#vault-logo {
+  width: 180px;
+  height: auto;
+  opacity: 0;
+  animation: fadeLogo 2s ease forwards 1s;
+}
+
+@keyframes openVault {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+  }
+  100% {
+    clip-path: circle(150% at 50% 50%);
+  }
+}
+
+@keyframes fadeLogo {
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: scale(1); }
+}
