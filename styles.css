@@ -112,3 +112,35 @@ footer {
   text-align: center;
   padding: 20px;
 }
+
+
+#negozio {
+  padding: 40px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.product {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.product:hover {
+  transform: scale(1.03);
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: contain;
+}
