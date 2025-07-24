@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrello - Game Bunker</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .cart-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    .cart-table th, .cart-table td { padding: 10px; border-bottom: 1px solid #ccc; text-align: center; }
+    .cart-controls button { margin: 0 5px; }
+    .cart-actions { margin-top: 20px; display: flex; gap: 20px; }
+    .cart-actions button { padding: 10px 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/images/logo.jpeg" alt="Logo Game Bunker" />
+      <span>Game Bunker</span>
+    </div>
+    <nav class="desktop-menu">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#negozio">Negozio</a>
+      <a href="index.html#tornei">Tornei</a>
+      <a href="index.html#contatti">Contatti</a>
+      <a href="index.html#chi-siamo">Chi Siamo</a>
+    </nav>
+    <div class="cart">🛒</div>
+  </header>
+
+  <main>
+    <section id="carrello">
+      <h2>Il tuo carrello</h2>
+      <div id="carrello-container"></div>
+      <div id="totale"></div>
+      <div class="cart-actions">
+        <button onclick="svuotaCarrello()">Svuota Carrello</button>
+        <button onclick="checkout()">Procedi al checkout</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    let carrello = JSON.parse(localStorage.getItem('carrello')) || [];
+
+    function aggiornaCarrello() {
+      const container = document.getElementById('carrello-container');
+      const totaleDiv = document.getElementById('totale');
+      const cartIcon = document.querySelector('.cart');
+
+      if (carrello.length === 0) {
+        container.innerHTML = "<p>Il tuo carrello è vuoto.</p>";
+        totaleDiv.innerText = "";
+        if (cartIcon) cartIcon.innerText = "🛒";
+        return;
+      }
+
+      let html = '<table class="cart-table"><tr><th>Prodotto</th><th>Prezzo</th><th>Quantità</th><th>Totale</th><th></th></tr>';
+      let somma = 0;
+
+      carrello.forEach((item, i) => {
+        let subtotale = item.price * item.qty;
+        somma += subtotale;
+        html += `<tr>
+          <td>${item.name}</td>
+          <td>€${item.price.toFixed(2)}</td>
+          <td class="cart-controls">
+            <button onclick="modificaQuantita(${i}, -1)">-</button>
+            ${item.qty}
+            <button onclick="modificaQuantita(${i}, 1)">+</button>
+          </td>
+          <td>€${subtotale.toFixed(2)}</td>
+          <td><button onclick="rimuovi(${i})">❌</button></td>
+        </tr>`;
+      });
+
+      html += "</table>";
+      container.innerHTML = html;
+      totaleDiv.innerText = `Totale: €${somma.toFixed(2)}`;
+      if (cartIcon) cartIcon.innerText = `🛒 ${carrello.reduce((acc, el) => acc + el.qty, 0)}`;
+      localStorage.setItem('carrello', JSON.stringify(carrello));
+    }
+
+    function modificaQuantita(index, delta) {
+      carrello[index].qty += delta;
+      if (carrello[index].qty <= 0) carrello.splice(index, 1);
+      aggiornaCarrello();
+    }
+
+    function rimuovi(index) {
+      carrello.splice(index, 1);
+      aggiornaCarrello();
+    }
+
+    function svuotaCarrello() {
+      if (confirm("Vuoi davvero svuotare il carrello?")) {
+        carrello = [];
+        aggiornaCarrello();
+      }
+    }
+
+    function checkout() {
+      alert("Checkout simulato. Qui verrà integrato Stripe.");
+    }
+
+    document.addEventListener("DOMContentLoaded", aggiornaCarrello);
+  </script>
+</body>
+</html>
